@@ -1,0 +1,8 @@
+#bookForm{
+  display: block;
+}
+
+dialog{
+  height: 50vh;
+  width: 50vw;
+}
