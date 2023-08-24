@@ -1,6 +1,7 @@
 const myLibrary = [];
 
 var bookDialog = document.getElementById("bookDialog")
+var form = document.getElementById("bookForm")
 
 function Book (title, author, pages, read) {
     this.title = title
@@ -12,7 +13,7 @@ function Book (title, author, pages, read) {
 
   function setReadBtnText(book, readBtn){
   if(book.read == "read")
-    readBtn.innerText = "Read"
+    readBtn.innerText = "   Read   "
   else
     readBtn.innerText = "Not Read"
   }
@@ -21,7 +22,7 @@ function showForm(){
   bookDialog.showModal()
 }
 
-document.getElementById("bookForm").addEventListener("submit", (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault()
   let input  = event.target.elements
 
@@ -34,6 +35,7 @@ document.getElementById("bookForm").addEventListener("submit", (event) => {
 
   myLibrary.push(newBook)
   displayBook(newBook)
+  form.reset()
   return false
 })
 
@@ -54,30 +56,38 @@ function displayBook(book) {
   container.appendChild(createTitle(book))
   container.appendChild(createAuthor(book))
   container.appendChild(createPages(book))
-  container.appendChild(createIsRead(book))
-  container.appendChild(createDelete(book))
+  container.appendChild(createButtons(book))
+  
   document.getElementById("books").appendChild(container)
 }
 
 function createTitle(book){
   const title = document.createElement("div")
   title.className = "title"
-  title.innerText = book.title
+  title.innerText = "Title: " + book.title
   return title
 }
 
 function createAuthor(book){
   const author = document.createElement("div")
   author.className = "author"
-  author.innerText = book.author
+  author.innerText = "Author: " + book.author
   return author
 }
 
 function createPages(book){
   const pages = document.createElement("div")
   pages.className = "pages"
-  pages.innerText = book.pages
+  pages.innerText = "Page Count: " + book.pages
   return pages
+}
+
+function createButtons(book){
+  const btnContainer = document.createElement("div")
+  btnContainer.className = "btnContainer"
+  btnContainer.appendChild(createIsRead(book))
+  btnContainer.appendChild(createDelete(book))
+  return btnContainer
 }
 
 function createIsRead(book){
@@ -102,7 +112,7 @@ function createDelete(book){
   deleteBtn.className = "deleteBtn"
   deleteBtn.innerText = "Delete"
   deleteBtn.addEventListener("click", () => {
-    deleteBtn.parentNode.remove()
+    deleteBtn.parentNode.parentNode.remove()
     myLibrary.splice(myLibrary.indexOf(book), 1)
   })
   return deleteBtn

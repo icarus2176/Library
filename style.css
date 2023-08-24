@@ -1,8 +1,98 @@
-#bookForm{
-  display: block;
+#header{
+  background-color: lightblue;
+  border-radius: 5%;
+  box-shadow: 1px 3px gray;
+  padding-bottom: 2vh;
+  min-height: 50px;
+  max-height: 300px;
+  box-sizing: border-box;
 }
 
-dialog{
-  height: 50vh;
-  width: 50vw;
+#showForm, h1, .caption, a{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  margin-bottom: min(2vw, 16px);
+}
+
+h1{
+  font-size: min(5vw, 40px);
+}
+
+.caption, a, #showForm{
+  font-size: min(3vw, 24px);
+}
+
+#showForm{
+  margin-top: max(1.5vw, 20px);
+  margin-bottom: max(1.5vw, 20px);
+  height: max(4vw, 50px);
+  width: 20vw;
+  font-size: 3vw;
+  border-radius: 20%;
+  background-color: aliceblue;
+}
+
+#bookDialog{
+  width: min(33vw, 500px);
+  background-color: lightblue;
+}
+
+#bookForm{
+  display: block;
+  width: 100%;
+}
+
+#bookForm>*{
+  width: 100%;
+  font-size: 120%;
+}
+
+#formBtn>*, #radioBtn>*{
+  font-size: 120%;
+}
+
+#formBtn>*{
+  border-radius: 15%;
+  background-color: aliceblue;
+}
+
+input{
+  margin-bottom: 3vh;
+}
+
+#books {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.title{
+  font-size: 3vw;
+  margin-top: 0;
+  margin-bottom: 1vh;
+  overflow: auto;
+  overflow-wrap: break-word;
+}
+
+.author, .pages, .book button{
+  font-size: 2vw;
+  margin: 1vw;
+}
+
+.book button{
+  border-radius: 15%;
+  background-color: aliceblue;
+
+}
+
+.book{
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  background-color: lightblue;
+  white-space: pre;
 }
